@@ -1058,3 +1058,86 @@ footer {
         font-size: 1rem;
     }
 }
+
+/* Mobile Header Styles */
+@media (max-width: 768px) {
+    header .container {
+        padding: 8px 0;
+    }
+    
+    .logo img {
+        height: 35px;
+        margin-right: 10px;
+    }
+    
+    .logo h1 {
+        font-size: 1.1rem;
+    }
+    
+    nav ul {
+        margin-top: 10px;
+    }
+    
+    nav ul li {
+        margin: 3px 8px;
+    }
+    
+    nav ul li a {
+        font-size: 0.9rem;
+    }
+    
+    /* Adjust page header for mobile */
+    .page-header {
+        padding: 40px 0;
+    }
+    
+    .page-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .page-header p {
+        font-size: 0.95rem;
+        padding: 0 15px;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+    header .container {
+        padding: 5px 0;
+    }
+    
+    .logo img {
+        height: 30px;
+        margin-right: 8px;
+    }
+    
+    .logo h1 {
+        font-size: 0.95rem;
+    }
+    
+    nav ul {
+        margin-top: 8px;
+    }
+    
+    nav ul li {
+        margin: 2px 6px;
+    }
+    
+    nav ul li a {
+        font-size: 0.85rem;
+    }
+    
+    /* Further reduce page header */
+    .page-header {
+        padding: 30px 0;
+    }
+    
+    .page-header h1 {
+        font-size: 1.6rem;
+    }
+    
+    .page-header p {
+        font-size: 0.9rem;
+    }
+}
