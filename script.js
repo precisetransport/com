@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Start automatic slide change
         function startSlider() {
-            slideInterval = setInterval(nextSlide, 3000);
+            slideInterval = setInterval(nextSlide, 4000);
         }
 
         // Stop automatic slide change
