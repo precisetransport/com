@@ -6,14 +6,133 @@
     <title>Courses - Precise Transport and Logistics Academy Nig Ltd</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Additional styles specific to courses page */
+        .exam-levels {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+        
+        .exam-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            border-top: 4px solid var(--primary);
+        }
+        
+        .exam-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .exam-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .exam-card ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .exam-card li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+        
+        .course-structure {
+            margin-top: 40px;
+        }
+        
+        .course-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .course-table th {
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        
+        .course-table td {
+            padding: 10px 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .course-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .course-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .modal-options {
+            margin-top: 15px;
+            padding-left: 20px;
+        }
+        
+        .modal-options li {
+            margin-bottom: 5px;
+        }
+        
+        .level-header {
+            display: flex;
+            align-items: center;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary);
+        }
+        
+        .level-header i {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-right: 15px;
+        }
+        
+        .level-header h2 {
+            color: var(--primary);
+            margin: 0;
+        }
+        
+        .requirements-box {
+            background-color: #e8f4fc;
+            border-left: 4px solid var(--secondary);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        
+        @media (max-width: 768px) {
+            .course-table {
+                font-size: 0.85rem;
+            }
+            
+            .course-table th, 
+            .course-table td {
+                padding: 8px 10px;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header Section -->
     <header>
         <div class="container">
             <div class="logo">
-                <img src="images/logo.jpg" alt="Precise Academy Logo">
-                <h1>Precise Transport and Logistics Academy Nig Ltd</h1>
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMTAwIj48cmVjdCB4PSIxMCIgeT0iMTAiIHdpZHRoPSIxODAiIGhlaWdodD0iODAiIGZpbGw9IiMxYTUyNzYiIHJ4PSI1Ii8+PHBhdGggZD0iTTUwIDMwaDEwMHY0MEg1MFYzMHptMCA1MGg0MHYyMEg1MFY4MHoiIGZpbGw9IiNmZmYiLz48dGV4dCB4PSIxMDAiIHk9IjY1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZmZmIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiPlBUJmFtcDtMPC90ZXh0Pjx0ZXh0IHg9IjEwMCIgeT0iODUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmYiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSI4Ij5BY2FkZW15PC90ZXh0Pjwvc3ZnPg==" alt="Precise Academy Logo">
+                <h1>Precise Transport & Logistics Academy</h1>
             </div>
             <nav>
                 <ul>
@@ -21,6 +140,7 @@
                     <li><a href="about.html">About</a></li>
                     <li><a href="courses.html" class="active">Courses</a></li>
                     <li><a href="teachers.html">Teachers</a></li>
+                    <li><a href="events.html">Events</a></li>
                     <li><a href="registration.html">Registration</a></li>
                 </ul>
             </nav>
@@ -30,111 +150,704 @@
     <!-- Page Header -->
     <section class="page-header">
         <div class="container">
-            <h1>Our Courses</h1>
-            <p>Comprehensive programs designed to prepare you for a successful career in transport and logistics</p>
+            <h1>Professional Courses</h1>
+            <p>Comprehensive CIOTA and CILT accredited programs for a successful career in transport and logistics</p>
         </div>
     </section>
 
-    <!-- Courses Section -->
+    <!-- Courses Introduction -->
     <section class="courses-page">
         <div class="container">
-            <div class="courses-grid">
-                <div class="course-card">
-                    <img src="images/Training & Capacity Building.webp" alt="Supply Chain Management">
-                    <div class="course-info">
-                        <h3>Training &amp; Capacity Building</h3>
-                        
-                        <p>This is a specialized course designed to equip participants with the knowledge and skills required to effectively plan, implement, and evaluate training and capacity building programs. Participants will learn about the latest trends in training and capacity building, as well as the best practices for designing and delivering training programs.</p>
-                       
-                        <a href="registration.html" class="btn">Enroll Now</a>
-                    </div>
+            <div class="intro-section">
+                <h2>EDUCATION & TRAINING FOR A PROFESSIONAL CAREER IN TRANSPORT & LOGISTICS</h2>
+                <p>Our academy offers comprehensive professional examination programs accredited by the Chartered Institute of Logistics and Transport (CILT) and the Chartered Institute of Transport Administration of Nigeria (CIOTA). These programs are designed to equip you with the knowledge and skills needed for a successful career in the transport and logistics industry.</p>
+                
+                <div class="education-policy">
+                    <h3>EDUCATION POLICY AND COURSE OBJECTIVES</h3>
+                    <p>The Chartered Institute of Transportation Administration of Nigeria (CIOTA) acknowledges the need for improving the standard of effective Transport Management covering all modes of transport (road, rail, maritime, aviation and pipeline). Our education policy is designed to raise the standard of professionalism within Transport management at all levels, encouraging those commencing a career within the industry and improving the knowledge and skills of those already engaged in Transport.</p>
+                    
+                    <p>Our syllabus incorporates both theory and practical experience, providing an integrated and progressive system towards Professional Graduate Diploma work with emphasis on professional competence. As a professional transportant, obtaining a credible professional transport qualification offers great opportunities for jobs not only in Nigeria but also within the West Africa (ECOWAS) sub-region and beyond.</p>
                 </div>
-                <div class="course-card">
-                    <img src="images/cu-2.jpg" alt="Warehouse Operations">
-                    <div class="course-info">
-                        <h3>Cargo Consolidation and Freighting</h3>
-                        
-                        <p>This course provides participants with the knowledge and skills required to effectively consolidate and freight cargo. Participants will learn about the latest trends in cargo consolidation and freight, as well as the best practices for designing and delivering cargo consolidation and freight programs.</p>
-                        
-                        <a href="registration.html" class="btn">Enroll Now</a>
-                    </div>
-                </div>
-                <div class="course-card">
-                    <img src="images/cu-3.jpg" alt="International Logistics">
-                    <div class="course-info">
-                        <h3>Trucking &amp; Relocation Services</h3>
-                        
-                        <p>This course provides participants with the knowledge and skills required to effectively manage trucking and relocation services. Participants will learn about the latest trends in trucking and relocation services, as well as the best practices for designing and delivering trucking and relocation services programs.</p>
-                        
-                        <a href="registration.html" class="btn">Enroll Now</a>
-                    </div>
-                </div>
-                <div class="course-card">
-                    <img src="images/cu-4.jpg" alt="Fleet Management">
-                    <div class="course-info">
-                        <h3>Fleet Procurement &amp; Management Consulting</h3>
-                        <p>This course provides participants with the knowledge and skills required to effectively manage fleet procurement and management. Participants will learn about the latest trends in fleet procurement and management, as well as the best practices for designing and delivering fleet procurement and management programs.</p>
-                        
-                        
-                        <a href="registration.html" class="btn">Enroll Now</a>
-                    </div>
-                </div>
-                <div class="course-card">
-                    <img src="images/cu-5.jpg" alt="Transport Economics">
-                    <div class="course-info">
-                        <h3>Eco-friendly Travel Advocate</h3>
-                        
-                        <p>This course provides participants with the knowledge and skills required to effectively advocate for eco-friendly travel. Participants will learn about the latest trends in eco-friendly travel, as well as the best practices for designing and delivering eco-friendly travel programs.</p>
-                        
-                        <a href="registration.html" class="btn">Enroll Now</a>
-                    </div>
-                </div>
-                <div class="course-card">
-                    <img src="images/Urban mobility planners..jpg" alt="Logistics Technology">
-                    <div class="course-info">
-                        <h3>Urban mobility planners.</h3>
-                        <p>This course provides participants with the knowledge and skills required to effectively plan and implement urban mobility solutions. Participants will learn about the latest trends in urban mobility, as well as the best practices for designing and delivering urban mobility programs.</p> 
-                        <a href="registration.html" class="btn">Enroll Now</a>
-                    </div>
-                </div>
+            </div>
 
-                <div class="course-card">
-                    <img src="images/Transport & Traffic Engineering.jpg" alt="Logistics Technology">
-                    <div class="course-info">
-                        <h3>Transport &amp; Traffic Engineering.</h3>
-                        <p>This course provides participants with the knowledge and skills required to effectively plan and implement transport and traffic engineering solutions. Participants will learn about the latest trends in transport and traffic engineering, as well as the best practices for designing and delivering transport and traffic engineering programs.</p>
-                        <a href="registration.html" class="btn">Enroll Now</a>
+            <!-- Examination Levels -->
+            <div class="exam-levels-intro">
+                <h2>THE FOUR MAIN CATEGORIES OF PROFESSIONAL EXAMINATIONS</h2>
+                <p>Our professional certification follows a structured four-level approach designed to progressively build your expertise in transport management and administration.</p>
+            </div>
+
+            <div class="exam-levels">
+                <div class="exam-card">
+                    <h3>A. FOUNDATION CERTIFICATE</h3>
+                    <p>in Transport Management and Administration</p>
+                    <div class="requirements-box">
+                        <h4>Entry Requirements:</h4>
+                        <ul>
+                            <li>Five (5) Credit passes in GCE/SSCE, O'Level or its equivalents in English Language, Mathematics, Economics, and any two Science or Social science subjects</li>
+                            <li>Candidates with 5 years of experience can be accepted with 4 Credit Passes including Mathematics and English Language</li>
+                        </ul>
                     </div>
                 </div>
-
-                <div class="course-card">
-                    <img src="images/Research & Development Consultants.jpeg" alt="Logistics Technology">
-                    <div class="course-info">
-                        <h3>Research &amp; Development Consultants</h3>
-                        <p>This course provides participants with the knowledge and skills required to effectively plan and implement research and development solutions. Participants will learn about the latest trends in research and development, as well as the best practices for designing and delivering research and development programs.</p>
-                        <a href="registration.html" class="btn">Enroll Now</a>
+                
+                <div class="exam-card">
+                    <h3>B. PROFESSIONAL DIPLOMA</h3>
+                    <p>in Transport Management and Administration</p>
+                    <div class="requirements-box">
+                        <h4>Entry Requirements:</h4>
+                        <ul>
+                            <li>CIOTA/CILT Foundation / Intermediate Certificate of a recognized body</li>
+                            <li>Accredited Diploma in Transport Management, Shipping Management, Travel & Tourism, Freight forwarding, Economics, Geography, Marketing, Business Studies, etc.</li>
+                        </ul>
                     </div>
                 </div>
-
-                <div class="course-card">
-                    <img src="images/Transport related Human Resources Consultants.jpg" alt="Logistics Technology">
-                    <div class="course-info">
-                        <h3>Transport related Human Resources Consultants</h3>
-                        <p>This course provides participants with the knowledge and skills required to effectively plan and implement transport related human resources solutions. Participants will learn about the latest trends in transport related human resources, as well as the best practices for designing and delivering transport related human resources programs.</p>
-                        <a href="registration.html" class="btn">Enroll Now</a>
+                
+                <div class="exam-card">
+                    <h3>C. PROFESSIONAL ADVANCE DIPLOMA</h3>
+                    <p>in Transport Management and Administration (Associate Membership Grade Level)</p>
+                    <div class="requirements-box">
+                        <h4>Entry Requirements:</h4>
+                        <ul>
+                            <li>CIOTA/CILT Professional Diploma, Professional Diploma Part 1 Certificate</li>
+                            <li>Advance Diploma, HND, B.Sc., PGD/MBA and other relevant qualifications with at least 4 years working experience</li>
+                        </ul>
                     </div>
                 </div>
-
-                <div class="course-card">
-                    <img src="images/cu-6.jpg" alt="Logistics Technology">
-                    <div class="course-info">
-                        <h3>Publishers of Transport &amp; Society Online</h3>
-                        <p>This course provides participants with the knowledge and skills required to effectively plan and implement transport and society online solutions. Participants will learn about the latest trends in transport and society online, as well as the best practices for designing and delivering transport and society online programs.</p>  
-                        <a href="registration.html" class="btn">Enroll Now</a>
+                
+                <div class="exam-card">
+                    <h3>D. POSTGRADUATE PROFESSIONAL DIPLOMA</h3>
+                    <p>in Transport Management and Administration (Full Membership Grade Level)</p>
+                    <div class="requirements-box">
+                        <h4>Entry Requirements:</h4>
+                        <ul>
+                            <li>CIOTA/CILT Professional Advance Diploma or final Examination Certificate of recognized allied bodies</li>
+                            <li>HND, B.Sc., PGD/M.Sc./MBA with at least 2 years working experience in relevant fields</li>
+                        </ul>
                     </div>
                 </div>
+            </div>
 
-
+            <!-- Course Structure Details -->
+            <div class="course-structure">
+                <h2>PROGRAMME STRUCTURE</h2>
+                <p>Our programs follow a structured curriculum designed to provide comprehensive knowledge in transport management and administration.</p>
+                
+                <!-- Foundation Certificate -->
+                <div class="level-header">
+                    <i class="fas fa-certificate"></i>
+                    <h2>A. FOUNDATION CERTIFICATE EXAMINATION</h2>
+                </div>
+                <p>The Certificate Examination level focuses on fundamental principles of transport. Successful completion qualifies you for the Professional Diploma Qualifying Examination.</p>
+                
+                <h3>FOUNDATION COURSE ONE</h3>
+                <table class="course-table">
+                    <thead>
+                        <tr>
+                            <th>COURSE CODE</th>
+                            <th>COURSE TITLE</th>
+                            <th>UNIT</th>
+                            <th>L</th>
+                            <th>T</th>
+                            <th>P</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>PCT101</td>
+                            <td>Principles of Transport</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>PCT102</td>
+                            <td>Principles of Economics</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>PCT103</td>
+                            <td>Communication in English</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>0</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>PCT104</td>
+                            <td>Transport and Economic Geography</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>PCT105</td>
+                            <td>Introduction to Entrepreneurial Skills</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>PCT106</td>
+                            <td>Cargo Handling and Transportation of Dangerous Goods</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><strong>TOTAL</strong></td>
+                            <td><strong>15</strong></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3>FOUNDATION COURSE TWO</h3>
+                <table class="course-table">
+                    <thead>
+                        <tr>
+                            <th>COURSE CODE</th>
+                            <th>COURSE TITLE</th>
+                            <th>UNIT</th>
+                            <th>L</th>
+                            <th>T</th>
+                            <th>P</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>PCT102</td>
+                            <td>Transport and Development in Nigeria</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>PCT104</td>
+                            <td>Fundamentals of Information Technology</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>PCT106</td>
+                            <td>Principles of Statistics</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>0</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>PCT108</td>
+                            <td>Elements of Shipping</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>0</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>PCT110</td>
+                            <td>Commercial Practice</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>0</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>PCT112</td>
+                            <td>Urban and Rural Transportation</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><strong>TOTAL</strong></td>
+                            <td><strong>15</strong></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <!-- Professional Diploma -->
+                <div class="level-header">
+                    <i class="fas fa-diploma"></i>
+                    <h2>B. PROFESSIONAL DIPLOMA EXAMINATION</h2>
+                </div>
+                <p>This level builds on foundation knowledge with more specialized transport management courses. Successful completion gives eligibility for the Professional Advance Diploma.</p>
+                
+                <h3>PROFESSIONAL DIPLOMA PART ONE</h3>
+                <table class="course-table">
+                    <thead>
+                        <tr>
+                            <th>COURSE CODE</th>
+                            <th>COURSE TITLE</th>
+                            <th>UNIT</th>
+                            <th>L</th>
+                            <th>T</th>
+                            <th>P</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>PDE201</td>
+                            <td>Principal of Management</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>PDE202</td>
+                            <td>Business Communication</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>PDE203</td>
+                            <td>Transport and Environment</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>PDE204</td>
+                            <td>Quantitative Technique</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>PDE205</td>
+                            <td>Introduction to Air Transportation</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>PDE206</td>
+                            <td>Principles and Management of Transport</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><strong>TOTAL</strong></td>
+                            <td><strong>15</strong></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3>PROFESSIONAL DIPLOMA PART TWO</h3>
+                <table class="course-table">
+                    <thead>
+                        <tr>
+                            <th>COURSE CODE</th>
+                            <th>COURSE TITLE</th>
+                            <th>UNIT</th>
+                            <th>L</th>
+                            <th>T</th>
+                            <th>P</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>PDE207</td>
+                            <td>Introduction to Maritime Transportation</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>PDE208</td>
+                            <td>Introduction to Transport Economics</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>PDE209</td>
+                            <td>Industrial Relations in Transport</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>PDE210</td>
+                            <td>Transport and Tourism</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>PDE211</td>
+                            <td>Basic Accounting</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>0</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>PDE212</td>
+                            <td>Human Resources Management in Transport</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><strong>TOTAL</strong></td>
+                            <td><strong>15</strong></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <!-- Professional Advanced Diploma -->
+                <div class="level-header">
+                    <i class="fas fa-award"></i>
+                    <h2>C. PROFESSIONAL ADVANCED DIPLOMA EXAMINATION</h2>
+                </div>
+                <p>This advanced level prepares students for senior management positions. Successful completion qualifies for Associate Membership and eligibility for the Postgraduate Professional Diploma.</p>
+                
+                <h3>PROFESSIONAL ADVANCE DIPLOMA PART ONE</h3>
+                <table class="course-table">
+                    <thead>
+                        <tr>
+                            <th>COURSE CODE</th>
+                            <th>COURSE TITLE</th>
+                            <th>UNIT</th>
+                            <th>L</th>
+                            <th>T</th>
+                            <th>P</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>PDE301</td>
+                            <td>Multimodal Transport Management</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>PDE302</td>
+                            <td>Transport Economics</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>PDE303</td>
+                            <td>International Trade and Payment</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>0</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>PDE304</td>
+                            <td>Operations Management</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>0</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>PDE305</td>
+                            <td>Law of Business and Carriage</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>0</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>PDE306</td>
+                            <td>Transport Insurance</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><strong>TOTAL</strong></td>
+                            <td><strong>17</strong></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3>PROFESSIONAL ADVANCE DIPLOMA PART TWO</h3>
+                <table class="course-table">
+                    <thead>
+                        <tr>
+                            <th>COURSE CODE</th>
+                            <th>COURSE TITLE</th>
+                            <th>UNIT</th>
+                            <th>L</th>
+                            <th>T</th>
+                            <th>P</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>PDE307</td>
+                            <td>Financial Management</td>
+                            <td>3</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>PDE308</td>
+                            <td>Fleet Operations and Management</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>0</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>PDE309</td>
+                            <td>Management and Control of Transport</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>0</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>PDE310</td>
+                            <td>Business and Corporate Strategy</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>0</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>PDE311</td>
+                            <td>Logistics and Distribution Planning</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><strong>TOTAL</strong></td>
+                            <td><strong>15</strong></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3>INDUSTRIAL ATTACHMENT/INTERNSHIP</h3>
+                <table class="course-table">
+                    <thead>
+                        <tr>
+                            <th>COURSE CODE</th>
+                            <th>COURSE TITLE</th>
+                            <th>UNIT</th>
+                            <th>L</th>
+                            <th>T</th>
+                            <th>P</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>SIWES 300</td>
+                            <td>Students Industrial Work Experience (SIWES)</td>
+                            <td>6</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>6</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><strong>TOTAL</strong></td>
+                            <td><strong>6</strong></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <!-- Postgraduate Professional Diploma -->
+                <div class="level-header">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h2>D. POSTGRADUATE PROFESSIONAL DIPLOMA EXAMINATION</h2>
+                </div>
+                <p>The highest level of professional certification, preparing candidates for executive positions and Full Membership of the Institute.</p>
+                
+                <table class="course-table">
+                    <thead>
+                        <tr>
+                            <th>COURSE CODE</th>
+                            <th>COURSE TITLE</th>
+                            <th>UNIT</th>
+                            <th>L</th>
+                            <th>T</th>
+                            <th>P</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>PGE601</td>
+                            <td>Transport Policy and Planning</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>0</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>PGE602</td>
+                            <td>Transport Evaluation and Finance</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td></td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>PGE603</td>
+                            <td>International Logistics & Supply Chain Management</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>0</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>PGE604</td>
+                            <td>Management Information Technology in Transport</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>0</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>PGE605</td>
+                            <td>Operations Research</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td colspan="6"><strong>TRANSPORT MANAGEMENT PRACTICE – (candidates to choose Two Modal Options)</strong></td>
+                        </tr>
+                        <tr>
+                            <td>MPG607</td>
+                            <td>Maritime Management</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>0</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>MPG608</td>
+                            <td>Port Operations and Management</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>0</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>APG609</td>
+                            <td>Air Transport Management</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>0</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>APG610</td>
+                            <td>Airport Operations and Management</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>0</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>RGE611</td>
+                            <td>Road Transport Management</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>RGE612</td>
+                            <td>Rail Transport Administration</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>0</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>PPG613</td>
+                            <td>Pipeline Transportation Management</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>0</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>PPG614</td>
+                            <td>Transport Research Project</td>
+                            <td>4</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><strong>TOTAL</strong></td>
+                            <td><strong></strong></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="requirements-box">
+                    <h4>Professional Research Project</h4>
+                    <p>To complete the Final Stage Qualifying Examinations, candidates will also be required to complete a professional research project in transport. The project is the academic equivalent of a reputable university postgraduate degree project in Nigeria and Overseas. Successful completion of the Final stage examinations, with research project and internship qualifies you for the award "Full Membership" of the Institute; and gives you eligibility to apply for registration as a Chartered Transportant and also for range of postgraduate programmes at various Universities in Nigeria and Overseas.</p>
+                </div>
+            </div>
+            
+            <!-- Call to Action -->
+            <div class="cta-section" style="text-align: center; margin: 50px 0; padding: 30px; background-color: var(--light); border-radius: 10px;">
+                <h2>Ready to Start Your Professional Journey?</h2>
+                <p>Join hundreds of professionals who have advanced their careers through our CIOTA and CILT accredited programs.</p>
+                <a href="registration.html" class="btn" style="margin-top: 20px;">Apply Now</a>
             </div>
         </div>
     </section>
@@ -175,7 +888,7 @@
                     <h4>Contact Us</h4>
                     <p><i class="fas fa-map-marker-alt"></i> 47, Fagbenro Square, Off Randle Avenue, Surulere, Lagos, Nigeria</p>
                     <p><i class="fas fa-phone"></i> +234 802 300 5603</p>
-                    <p><i class="fas fa-envelope"></i> info@precisetransportacademy.com</p>
+                    <p><i class="fas fa-envelope"></i> emeka.ogwara@gmail.com  ibroman123@yahoo.com</p>
                 </div>
                 <div class="footer-section">
                     <h4>Follow Us</h4>
@@ -190,7 +903,6 @@
             </div>
         </div>
     </footer>
-
     <script src="script.js"></script>
 </body>
 </html>
